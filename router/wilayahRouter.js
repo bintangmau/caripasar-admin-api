@@ -10,5 +10,7 @@ router.get('/getjumlahsupplier/:idkota', wilayahController.getJumlahSupplier)
 router.get('/getjumlahjenisbarang/:idKota', wilayahController.getJumlahJenisBarang)
 router.get('/getjumlahstokbarang/:idKota', wilayahController.getJumlahStokBarang)
 router.get('/searchwilayahbyname/:namaKota', wilayahController.searchWilayahByName)
+router.get('/getshowsupplier/:idKota', wilayahController.getShowSupplier)
+router.get('/getshowproduct/:idKota', wilayahController.getShowProduct)
 
 module.exports = router

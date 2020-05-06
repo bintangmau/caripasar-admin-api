@@ -130,5 +130,35 @@ module.exports = {
             }
             return res.status(200).send(results)
         })           
-    }
+    },
+    getJumlahBarang: (req, res) => {
+        var sql = `SELECT COUNT(*) as jumlahbarang 
+                    FROM "caripasar"."barang" b
+                    JOIN "caripasar"."supplier" s
+                    ON b."idSupplier" = s."idsupplier"
+                    WHERE s."idsupplier" = ${req.params.idSupplier};`
+
+        db.query(sql, (err, results) => {
+            if(err) {
+                console.log(err)
+                return res.status(500).send(err)
+            }
+            return res.status(200).send(results)
+        })         
+    },
+    getJumlahStok: (req, res) => {
+        var sql = `SELECT b."stokBarang" as jumlahstok
+                    FROM "caripasar"."barang" b
+                    JOIN "caripasar"."supplier" s
+                    ON b."idSupplier" = s."idsupplier"
+                    WHERE s."idsupplier" = ${req.params.idSupplier};`
+
+        db.query(sql, (err, results) => {
+            if(err) {
+                console.log(err)
+                return res.status(500).send(err)
+            }
+            return res.status(200).send(results)
+        })     
+    }   
 }

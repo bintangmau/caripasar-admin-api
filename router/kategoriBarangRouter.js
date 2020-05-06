@@ -8,5 +8,6 @@ router.post('/inputkategori', kategoriBarangController.inputKategori)
 router.delete('/deletekategoribarang/:idKategori', kategoriBarangController.deleteKategoriBarang)
 router.get('/getjumlahprodukperjenis/:idKategori', kategoriBarangController.getJumlahProdukPerJenis)
 router.get('/getjumlahprodukperstok/:idKategori', kategoriBarangController.getJumlahProdukPerStok)
+router.get('/getshowproduct/:idKategori', kategoriBarangController.getShowProduct)
 
 module.exports = router

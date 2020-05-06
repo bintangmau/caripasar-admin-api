@@ -206,5 +206,29 @@ module.exports = {
             } 
             return res.status(200).send(results)
         })       
+    },
+    filterBarangByWilayah: (req, res) => {
+        var sql = `SELECT b."idBarang",
+                        b."namaBarang",
+                        b."hargaBarang",
+                        b."stokBarang",
+                        b."deskripsiBarang",
+                        s."namasupplier"
+
+                FROM "caripasar"."barang" b
+                JOIN "caripasar"."supplier" s
+                ON s."idsupplier" = b."idSupplier"
+                JOIN "caripasar"."kota" k
+                ON s."idkota" = k."idkota"
+                WHERE s."idkota" = ${req.params.idKota}
+                ORDER BY b."idBarang" DESC;`
+
+        db.query(sql, (err, results) => {
+            if(err) {
+                console.log(err)
+                return res.status(500).send(err)
+            } 
+            return res.status(200).send(results)
+        })          
     }
 }

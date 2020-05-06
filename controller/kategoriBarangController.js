@@ -64,5 +64,29 @@ module.exports = {
             } 
             return res.status(200).send(results)
         })         
+    },
+    getShowProduct: (req, res) => {
+        var sql = `SELECT 
+                        "idBarang",
+                        "namaBarang",
+                        "hargaBarang",
+                        "stokBarang",
+                        "deskripsiBarang",
+                        "namasupplier"
+                FROM
+                        "caripasar"."barang"
+                JOIN "caripasar"."supplier"
+                        ON "idSupplier" = "idsupplier"
+                    WHERE "kategoriBarang" = ${req.params.idKategori}
+                ORDER BY 
+                        "idBarang" DESC;`
+
+        db.query(sql, (err, results) => {
+            if(err) {
+                console.log(err)
+                return res.status(500).send(err)
+            } 
+            return res.status(200).send(results)
+        })         
     }
 }

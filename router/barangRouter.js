@@ -13,5 +13,6 @@ router.get('/filterbarangbysupplier/:idSupplier', barangController.filterBarangB
 router.post('/filterbarangbystock', barangController.filterBarangByStock)
 router.post('/filterbarangbyprice', barangController.filterBarangByPrice)
 router.get('/getlistkategoribarang', barangController.getListKategoriBarang)
+router.get('/filterbarangbywilayah/:idKota', barangController.filterBarangByWilayah)
 
 module.exports = router

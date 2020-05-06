@@ -11,5 +11,7 @@ router.get('/carisupplierbynama/:namaSupplier', supplierController.cariSupplierB
 router.get('/getlistkotaforinput', supplierController.getListKotaForInput)
 router.get('/getlistdatakota', supplierController.getListDataKota)
 router.get('/getfiltersupplierbywilayah/:idKota', supplierController.getFilterSupplierByWilayah)
+router.get('/getjumlahbarang/:idSupplier', supplierController.getJumlahBarang)
+router.get('/getjumlahstok/:idSupplier', supplierController.getJumlahStok)
 
 module.exports = router
