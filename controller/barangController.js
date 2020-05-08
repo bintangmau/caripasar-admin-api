@@ -9,7 +9,8 @@ module.exports = {
                         "hargaBarang",
                         "stokBarang",
                         "deskripsiBarang",
-                        "namasupplier"
+                        "namasupplier",
+                        "satuanBarang"
                     FROM
                         "caripasar"."barang"
                     JOIN "caripasar"."supplier"
@@ -41,14 +42,15 @@ module.exports = {
             data.gambarBarang = `${image[0].filename}` 
 
             var sql = `INSERT INTO "caripasar"."barang"
-            ("namaBarang", "hargaBarang", "stokBarang", "deskripsiBarang", "idSupplier", "gambarBarang", "kategoriBarang")
+            ("namaBarang", "hargaBarang", "stokBarang", "deskripsiBarang", "idSupplier", "gambarBarang", "kategoriBarang", "satuanBarang" )
                 VALUES ('${data.namaBarang}', 
                         ${data.hargaBarang}, 
                         ${data.stokBarang}, 
                         '${data.deskripsiBarang}', 
                         ${data.idSupplier}, 
                         '${data.gambarBarang}', 
-                        ${data.kategoriBarang});`
+                        ${data.kategoriBarang},
+                        '${data.satuanBarang}');`
 
             db.query(sql, (err, results) => {
                 if(err) {
@@ -78,7 +80,7 @@ module.exports = {
                         "hargaBarang" = ${req.body.hargaBarang},
                         "stokBarang" = ${req.body.stokBarang},
                         "deskripsiBarang" = '${req.body.deskripsiBarang}',
-                        "idSupplier" = ${req.body.idSupplier}
+                        "satuanBarang" = '${req.body.satuanBarang}'
                         WHERE "idBarang" = ${req.body.idBarang};
                         `
         db.query(sql, (err, results) => {
