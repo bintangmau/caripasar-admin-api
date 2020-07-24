@@ -10,7 +10,9 @@ module.exports = {
                         "stokBarang",
                         "deskripsiBarang",
                         "namasupplier",
-                        "satuanBarang"
+                        "satuanBarang",
+                        "kaloriBarang",
+                        "nutrisiBarang"
                     FROM
                         "caripasar"."barang"
                     JOIN "caripasar"."supplier"
@@ -42,7 +44,8 @@ module.exports = {
             data.gambarBarang = `${image[0].filename}` 
 
             var sql = `INSERT INTO "caripasar"."barang"
-            ("namaBarang", "hargaBarang", "stokBarang", "deskripsiBarang", "idSupplier", "gambarBarang", "kategoriBarang", "satuanBarang" )
+            ("namaBarang", "hargaBarang", "stokBarang", "deskripsiBarang", "idSupplier", "gambarBarang", "kategoriBarang", "satuanBarang",
+                "kaloriBarang", "nutrisiBarang" )
                 VALUES ('${data.namaBarang}', 
                         ${data.hargaBarang}, 
                         ${data.stokBarang}, 
@@ -50,7 +53,9 @@ module.exports = {
                         ${data.idSupplier}, 
                         '${data.gambarBarang}', 
                         ${data.kategoriBarang},
-                        '${data.satuanBarang}');`
+                        '${data.satuanBarang}',
+                        ${data.kaloriBarang},
+                        '${data.nutrisiBarang}');`
 
             db.query(sql, (err, results) => {
                 if(err) {
@@ -80,7 +85,9 @@ module.exports = {
                         "hargaBarang" = ${req.body.hargaBarang},
                         "stokBarang" = ${req.body.stokBarang},
                         "deskripsiBarang" = '${req.body.deskripsiBarang}',
-                        "satuanBarang" = '${req.body.satuanBarang}'
+                        "satuanBarang" = '${req.body.satuanBarang}',
+                        "kaloriBarang" = ${req.body.kaloriBarang},
+                        "nutrisiBarang" = '${req.body.nutrisiBarang}'
                         WHERE "idBarang" = ${req.body.idBarang};
                         `
         db.query(sql, (err, results) => {
